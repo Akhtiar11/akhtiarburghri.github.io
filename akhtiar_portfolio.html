@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhtiar Ali - Computer Science Student & Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #ffffff;
+            --shadow-neumorphic: 9px 9px 16px #d1d9e6, -9px -9px 16px #ffffff;
+            --shadow-inset: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
+            --shadow-hover: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            --border-radius: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --text-primary: #f7fafc;
+            --text-secondary: #e2e8f0;
+            --text-muted: #a0aec0;
+            --bg-primary: #1a202c;
+            --bg-secondary: #2d3748;
+            --shadow-neumorphic: 9px 9px 16px #0d1117, -9px -9px 16px #232936;
+            --shadow-inset: inset 6px 6px 12px #0d1117, inset -6px -6px 12px #232936;
+            --shadow-hover: 6px 6px 12px #0d1117, -6px -6px 12px #232936;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Neumorphic Components */
+        .neu-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-neumorphic);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .neu-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .neu-button {
+            background: var(--bg-primary);
+            border: none;
+            border-radius: 15px;
+            box-shadow: var(--shadow-neumorphic);
+            padding: 1rem 2rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .neu-button:hover {
+            box-shadow: var(--shadow-inset);
+            transform: scale(0.98);
+        }
+
+        .neu-button.primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 9px 9px 16px rgba(102, 126, 234, 0.3), -9px -9px 16px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(240, 244, 248, 0.95);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(26, 32, 44, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-inset);
+        }
+
+        .theme-toggle {
+            background: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: var(--shadow-neumorphic);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--shadow-inset);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .typing-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .profile-card {
+            background: var(--bg-primary);
+            border-radius: 30px;
+            box-shadow: var(--shadow-neumorphic);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: var(--shadow-neumorphic);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .profile-avatar i {
+            z-index: 0;
+        }
+
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .university-badge {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: var(--shadow-inset);
+            margin-top: 1rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .goals-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .goals-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 15px;
+            box-shadow: var(--shadow-neumorphic);
+        }
+
+        .goals-list i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .achievements {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-neumorphic);
+            text-align: center;
+        }
+
+        .achievement-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-neumorphic);
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category i {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-neumorphic);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            box-shadow: var(--shadow-inset);
+            transform: scale(0.98);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-neumorphic);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--gradient-accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Font Awesome 5 Free';
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 900;
+        }
+
+        .project-image.flutter::before { content: '\f3cd'; }
+        .project-image.game::before { content: '\f11b'; }
+        .project-image.ai::before { content: '\f544'; }
+        .project-image.voice::before { content: '\f130'; }
+        .project-image.database::before { content: '\f1c0'; }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-learning {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-inset);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link.primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-neumorphic);
+        }
+
+        .project-link.secondary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-neumorphic);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Blog Section */
+        .blog {
+            background: var(--bg-secondary);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-neumorphic);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+        }
+
+        .blog-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            box-shadow: var(--shadow-neumorphic);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            box-shadow: var(--shadow-inset);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-neumorphic);
+        }
+
+        .download-resume {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-neumorphic);
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .download-resume:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .download-resume i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-primary);
+            border-radius: 50%;
+            box-shadow: var(--shadow-neumorphic);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            box-shadow: var(--shadow-inset);
+            transform: scale(0.95);
+        }
+
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-neumorphic);
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Hosting info banner */
+        .hosting-info {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        .hosting-info a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Akhtiar Ali</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <buttonbutton class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <br><span class="typing-text">Akhtiar Ali</span></h1>
+                    <p class="subtitle">Computer Science Student & <span id="typewriter"></span></p>
+                    <p>Passionate about Flutter development, game development, AI, and automation. Currently pursuing my CS degree at SZABIST University while building innovative mobile apps and exploring the fascinating world of game development with Flame and Godot.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="neu-button primary">
+                            <i class="fas fa-rocket"></i>
+                            View My Projects
+                        </a>
+                        <a href="#contact" class="neu-button">
+                            <i class="fas fa-envelope"></i>
+                            Let's Connect
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card floating">
+                        <div class="profile-avatar">
+                            <!-- Replace 'your-photo.jpg' with your actual photo filename -->
+                            <img src="profile-PIC.jpg" alt="Akhtiar Ali Profile Photo" id="profileImage" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                            <i class="fas fa-user-graduate" id="fallbackIcon"></i>
+                        </div>
+                        <h3>CS Student & Developer</h3>
+                        <p>SZABIST University</p>
+                        <div class="university-badge">
+                            <strong>2 Years Completed</strong><br>
+                            <small>Computer Science Degree</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Passionate student developer with a vision for innovative technology solutions</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dedicated Computer Science student at SZABIST University, currently in my third year with two years of solid academic foundation behind me. My journey in programming began with curiosity and has evolved into a passionate pursuit of creating meaningful digital experiences.</p>
+                    
+                    <p>I specialize in <strong>Flutter development</strong> for cross-platform mobile applications, and I'm deeply passionate about <strong>game development</strong> using engines like Flame and Godot. My technical expertise spans multiple programming languages including Dart, C++, Python, and JavaScript, with a particular love for neumorphic UI design that creates intuitive and beautiful user experiences.</p>
+
+                    <p>Beyond mobile apps, I'm fascinated by <strong>AI and automation</strong>. I work with cutting-edge tools like n8n for workflow automation, integrate speech recognition technologies, and leverage cloud platforms like Firebase and Supabase to build scalable applications. My goal is to bridge the gap between complex technology and user-friendly interfaces.</p>
+
+                    <ul class="goals-list">
+                        <li>
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Complete my CS degree with excellence and contribute to open-source projects</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-gamepad"></i>
+                            <span>Develop indie games that combine great gameplay with innovative technology</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Create mobile apps that solve real-world problems and improve lives</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-robot"></i>
+                            <span>Explore AI/ML applications in mobile development and automation</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="achievements">
+                    <div class="achievement-item">
+                        <div class="achievement-number">10+</div>
+                        <div>Projects Completed</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number">5+</div>
+                        <div>Programming Languages</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number">2</div>
+                        <div>Years of Study</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number">∞</div>
+                        <div>Passion for Learning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>A comprehensive overview of my technical expertise and tools</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category neu-card">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Assembly</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category neu-card">
+                    <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">Material Design</span>
+                        <span class="skill-tag">Cupertino</span>
+                        <span class="skill-tag">State Management</span>
+                        <span class="skill-tag">Provider</span>
+                        <span class="skill-tag">Bloc</span>
+                    </div>
+                </div>
+                <div class="skill-category neu-card">
+                    <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Flame Engine</span>
+                        <span class="skill-tag">Godot</span>
+                        <span class="skill-tag">2D Game Design</span>
+                        <span class="skill-tag">Game Physics</span>
+                        <span class="skill-tag">Sprite Animation</span>
+                        <span class="skill-tag">Level Design</span>
+                    </div>
+                </div>
+                <div class="skill-category neu-card">
+                    <h3><i class="fas fa-cloud"></i> Backend & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">Supabase</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Authentication</span>
+                        <span class="skill-tag">Real-time Database</span>
+                        <span class="skill-tag">Cloud Storage</span>
+                    </div>
+                </div>
+                <div class="skill-category neu-card">
+                    <h3><i class="fas fa-robot"></i> AI & Automation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Speech Recognition</span>
+                        <span class="skill-tag">n8n Automation</span>
+                        <span class="skill-tag">Phantombuster</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Natural Language Processing</span>
+                        <span class="skill-tag">Workflow Automation</span>
+                    </div>
+                </div>
+                <div class="skill-category neu-card">
+                    <h3><i class="fas fa-tools"></i> Tools & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>A showcase of my development journey and technical achievements</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image flutter"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Teacher Management App</h3>
+                        <p class="project-description">
+                            A comprehensive Flutter application designed for educational institutions to manage teacher profiles, schedules, and student interactions. Features real-time updates, offline capability, and beautiful neumorphic UI design.
+                        </p>
+                        <div class="project-learning">
+                            <strong>What I learned:</strong> Advanced Flutter state management, Firebase real-time synchronization, custom UI animations, and implementing complex navigation patterns for multi-user roles.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Provider</span>
+                            <span class="tech-tag">Material Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image game"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Metal Slug 2D Game</h3>
+                        <p class="project-description">
+                            A thrilling 2D side-scrolling shooter game built with Flame engine, featuring classic Metal Slug-style gameplay with modern touches. Includes multiple levels, enemy AI, power-ups, and smooth animations.
+                        </p>
+                        <div class="project-learning">
+                            <strong>What I learned:</strong> Game physics implementation, sprite animation systems, collision detection algorithms, game state management, and optimizing performance for mobile devices.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flame Engine</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Game Physics</span>
+                            <span class="tech-tag">Animation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-gamepad"></i> Play Game
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image ai"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Job Application Automation</h3>
+                        <p class="project-description">
+                            An intelligent automation system using n8n and Phantombuster to streamline job applications. Features CV parsing, job matching algorithms, and automated application submission with personalized cover letters.
+                        </p>
+                        <div class="project-learning">
+                            <strong>What I learned:</strong> Workflow automation design, API integrations, web scraping techniques, natural language processing for CV analysis, and building scalable automation pipelines.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">n8n</span>
+                            <span class="tech-tag">Phantombuster</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Web Scraping</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-robot"></i> View Demo
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image voice"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Voice-Controlled Flutter App</h3>
+                        <p class="project-description">
+                            An innovative mobile application that responds to voice commands, featuring speech-to-text conversion, natural language processing, and voice-controlled navigation. Perfect for accessibility and hands-free operation.
+                        </p>
+                        <div class="project-learning">
+                            <strong>What I learned:</strong> Speech recognition implementation, voice command processing, real-time audio handling, accessibility design principles, and integrating ML models for voice analysis.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Speech Recognition</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Audio Processing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-microphone"></i> Try Voice Demo
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image database"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hospital Management System</h3>
+                        <p class="project-description">
+                            A comprehensive C++ desktop application for hospital administration, featuring patient records, appointment scheduling, staff management, and billing systems. Built with modern C++ practices and efficient data structures.
+                        </p>
+                        <div class="project-learning">
+                            <strong>What I learned:</strong> Advanced C++ programming, database design principles, file handling systems, object-oriented design patterns, and building complex desktop applications with user-friendly interfaces.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Data Structures</span>
+                            <span class="tech-tag">File Handling</span>
+                            <span class="tech-tag">OOP</span>
+                            <span class="tech-tag">Desktop App</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-desktop"></i> View Demo
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image flutter"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Online Book House</h3>
+                        <p class="project-description">
+                            A beautiful Flutter e-commerce app for book lovers, featuring advanced search, personalized recommendations, secure payments, and social reading features. Integrated with Supabase for real-time data synchronization.
+                        </p>
+                        <div class="project-learning">
+                            <strong>What I learned:</strong> E-commerce app architecture, payment gateway integration, recommendation algorithms, social features implementation, and advanced Flutter performance optimization techniques.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Payment Integration</span>
+                            <span class="tech-tag">State Management</span>
+                            <span class="tech-tag">E-commerce</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">
+                                <i class="fas fa-book"></i> Browse Books
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dev Blog & Insights</h2>
+                <p>Sharing my learning journey and technical discoveries</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card fade-in">
+                    <div class="blog-date">Coming Soon - January 2025</div>
+                    <h3 class="blog-title">Building Scalable Flutter Apps: My Journey with State Management</h3>
+                    <p class="blog-excerpt">
+                        Exploring the evolution from setState to Provider, Bloc, and Riverpod. A deep dive into choosing the right state management solution for different app complexities and team sizes.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="blog-card fade-in">
+                    <div class="blog-date">Coming Soon - February 2025</div>
+                    <h3 class="blog-title">Game Development with Flame: From Concept to Play Store</h3>
+                    <p class="blog-excerpt">
+                        A complete guide to building 2D games with Flutter's Flame engine. Covering game loops, sprite animations, collision detection, and publishing your game to app stores.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="blog-card fade-in">
+                    <div class="blog-date">Coming Soon - March 2025</div>
+                    <h3 class="blog-title">Automating the Boring Stuff: n8n Workflows for Developers</h3>
+                    <p class="blog-excerpt">
+                        How I automated my job application process and daily development tasks using n8n. Practical examples of workflow automation that every developer should know.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+                <p>Ready to collaborate on exciting projects or discuss opportunities</p>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h3>Ready to Build Something Amazing Together?</h3>
+                <p>I'm actively seeking internship opportunities, freelance projects, and exciting collaborations. Whether you need a Flutter developer, game development enthusiast, or someone passionate about AI automation, let's create something innovative!</p>
+                <a href="mailto:akhtiar.ali.dev@gmail.com" class="neu-button" style="background: white; color: var(--primary-color);">
+                    <i class="fas fa-handshake"></i>
+                    Let's Collaborate
+                </a>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <a href="mailto:akhtiar.ali.dev@gmail.com" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>akhtiar.ali.dev@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/akhtiar-ali" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p>Connect with me professionally</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/akhtiar-ali" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <h4>GitHub</h4>
+                            <p>Explore my open source work</p>
+                        </div>
+                    </a>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Karachi, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <a href="#" class="download-resume" onclick="downloadResume()">
+                        <i class="fas fa-download"></i>
+                        <h4>Download Resume</h4>
+                        <p>Get my complete CV with detailed project information</p>
+                    </a>
+
+                    <div class="hosting-info">
+                        <h4>🚀 Host Your Portfolio for FREE!</h4>
+                        <p>
+                            <strong>Recommended platforms:</strong><br>
+                            <aa href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> • 
+                            <a href="https://netlify.com/" target="_blank" rel="noopener">Netlify</a> • 
+                            <a href="https://vercel.com/" target="_blank" rel="noopener">Vercel</a> • 
+                            <a href="https://firebase.google.com/docs/hosting" target="_blank" rel="noopener">Firebase Hosting</a>
+                        </p>
+                        <small>Simply upload your HTML file and get a professional URL instantly!</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/akhtiar-ali" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/akhtiar-ali" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:akhtiar.ali.dev@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://twitter.com/akhtiar_ali_dev" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Akhtiar Ali. Built with passion for innovation and clean code. Available for exciting opportunities!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+        }
+
+        // Typewriter Effect
+        const roles = ['Flutter Developer', 'Game Developer', 'AI Enthusiast', 'Automation Expert', 'Problem Solver'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function typeWriter() {
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                }
+            } else {
+                typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                
+                if (charIndex === currentRole.length) {
+                    setTimeout(() => {
+                        isDeleting = true;
+                    }, 2000);
+                }
+            }
+            
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Start typewriter effect
+        typeWriter();
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Download Resume Function
+        function downloadResume() {
+            // In a real implementation, this would download an actual PDF
+            alert('Resume download feature - In a real implementation, this would download your PDF resume!');
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = document.body.getAttribute('data-theme') === 'dark' 
+                    ? 'rgba(26, 32, 44, 0.98)' 
+                    : 'rgba(240, 244, 248, 0.98)';
+            } else {
+                navbar.style.background = document.body.getAttribute('data-theme') === 'dark' 
+                    ? 'rgba(26, 32, 44, 0.95)' 
+                    : 'rgba(240, 244, 248, 0.95)';
+            }
+        });
+
+        // Add some interactive elements for neumorphic effect
+        document.querySelectorAll('.neu-card, .neu-button').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Contact item click effects
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Add a subtle pulse effect
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const image = this.querySelector('.project-image');
+                image.style.transform = 'scale(1.05)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const image = this.querySelector('.project-image');
+                image.style.transform = 'scale(1)';
+            });
+        });
+
+        // Skill tag animations
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.background = 'var(--gradient-primary)';
+                this.style.color = 'white';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.background = 'var(--bg-primary)';
+                this.style.color = 'var(--text-primary)';
+            });
+        });
+
+        // Add loading states for external links
+        document.querySelectorAll('a[href^="http"], a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    const originalClass = icon.className;
+                    icon.className = 'fas fa-spinner fa-spin';
+                    setTimeout(() => {
+                        icon.className = originalClass;
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
