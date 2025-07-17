@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akhtiar Ali - Computer Science Student & Developer</title>
+    <title>Akhtiar Burghri - Computer Science Student & Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -13,33 +13,62 @@
             box-sizing: border-box;
         }
 
+        .profile-img-hidden {
+            display: none;
+        }
+
         :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #f093fb;
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-            --text-muted: #718096;
-            --bg-primary: #f0f4f8;
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --text-primary: #1f2937;
+            --text-secondary: #374151;
+            --text-muted: #6b7280;
+            --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
-            --shadow-neumorphic: 9px 9px 16px #d1d9e6, -9px -9px 16px #ffffff;
-            --shadow-inset: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
-            --shadow-hover: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+            --bg-card: #fdfdfd;
+            --shadow-neumorphic:
+                8px 8px 20px rgba(55, 84, 170, 0.15),
+                -8px -8px 20px rgba(255, 255, 255, 0.7),
+                inset 0px 0px 0px rgba(255, 255, 255, 0);
+            --shadow-inset:
+                inset 4px 4px 8px rgba(55, 84, 170, 0.1),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            --shadow-hover:
+                12px 12px 24px rgba(55, 84, 170, 0.2),
+                -12px -12px 24px rgba(255, 255, 255, 0.8);
+            --shadow-soft:
+                0 10px 25px rgba(55, 84, 170, 0.1),
+                0 4px 10px rgba(55, 84, 170, 0.08);
             --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --gradient-accent: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-            --border-radius: 20px;
+            --gradient-accent: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            --gradient-card: linear-gradient(145deg, #ffffff, #f8fafc);
+            --border-radius: 24px;
+            --border-radius-sm: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         [data-theme="dark"] {
-            --text-primary: #f7fafc;
-            --text-secondary: #e2e8f0;
-            --text-muted: #a0aec0;
-            --bg-primary: #1a202c;
-            --bg-secondary: #2d3748;
-            --shadow-neumorphic: 9px 9px 16px #0d1117, -9px -9px 16px #232936;
-            --shadow-inset: inset 6px 6px 12px #0d1117, inset -6px -6px 12px #232936;
-            --shadow-hover: 6px 6px 12px #0d1117, -6px -6px 12px #232936;
+            --text-primary: #f9fafb;
+            --text-secondary: #e5e7eb;
+            --text-muted: #9ca3af;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-card: #1f2937;
+            --shadow-neumorphic:
+                8px 8px 20px rgba(0, 0, 0, 0.3),
+                -8px -8px 20px rgba(255, 255, 255, 0.02),
+                inset 0px 0px 0px rgba(255, 255, 255, 0);
+            --shadow-inset:
+                inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.02);
+            --shadow-hover:
+                12px 12px 24px rgba(0, 0, 0, 0.4),
+                -12px -12px 24px rgba(255, 255, 255, 0.03);
+            --shadow-soft:
+                0 10px 25px rgba(0, 0, 0, 0.2),
+                0 4px 10px rgba(0, 0, 0, 0.15);
+            --gradient-card: linear-gradient(145deg, #1f2937, #111827);
         }
 
         body {
@@ -56,24 +85,40 @@
             padding: 0 2rem;
         }
 
-        /* Neumorphic Components */
+        /* Enhanced Neumorphic Components */
         .neu-card {
-            background: var(--bg-primary);
+            background: var(--gradient-card);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-neumorphic);
             padding: 2rem;
             transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
         }
 
         .neu-card:hover {
             box-shadow: var(--shadow-hover);
             transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.2);
         }
 
         .neu-button {
-            background: var(--bg-primary);
+            background: var(--gradient-card);
             border: none;
-            border-radius: 15px;
+            border-radius: var(--border-radius-sm);
             box-shadow: var(--shadow-neumorphic);
             padding: 1rem 2rem;
             color: var(--text-primary);
@@ -84,17 +129,50 @@
             gap: 0.5rem;
             transition: var(--transition);
             cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neu-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .neu-button:hover::before {
+            left: 100%;
         }
 
         .neu-button:hover {
             box-shadow: var(--shadow-inset);
             transform: scale(0.98);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .neu-button.email-btn {
+            background: white !important;
+            color: var(--primary-color) !important;
         }
 
         .neu-button.primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 9px 9px 16px rgba(102, 126, 234, 0.3), -9px -9px 16px rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                8px 8px 20px rgba(99, 102, 241, 0.3),
+                -8px -8px 20px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .neu-button.primary:hover {
+            box-shadow: 
+                4px 4px 12px rgba(99, 102, 241, 0.4),
+                -4px -4px 12px rgba(255, 255, 255, 0.1);
         }
 
         /* Navigation */
@@ -220,12 +298,24 @@
         }
 
         .profile-card {
-            background: var(--bg-primary);
-            border-radius: 30px;
+            background: var(--gradient-card);
+            border-radius: 32px;
             box-shadow: var(--shadow-neumorphic);
             padding: 3rem 2rem;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            opacity: 0.6;
         }
 
         .profile-avatar {
@@ -239,9 +329,12 @@
             justify-content: center;
             font-size: 4rem;
             color: white;
-            box-shadow: var(--shadow-neumorphic);
+            box-shadow: 
+                0 20px 40px rgba(99, 102, 241, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         .profile-avatar img {
@@ -264,21 +357,40 @@
             right: 0;
             bottom: 0;
             border-radius: 50%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-            animation: shine 3s infinite;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+            animation: gentleShine 6s ease-in-out infinite;
+            opacity: 0.7;
         }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        @keyframes gentleShine {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(-50%) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateX(50%) translateY(50%) rotate(180deg);
+                opacity: 0.7;
+            }
         }
 
         .university-badge {
-            background: var(--bg-secondary);
-            border-radius: 15px;
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-sm);
             padding: 1rem;
             box-shadow: var(--shadow-inset);
             margin-top: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            position: relative;
+        }
+
+        .university-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
         }
 
         /* Sections */
@@ -390,10 +502,29 @@
         }
 
         .skill-category {
-            background: var(--bg-secondary);
+            background: var(--gradient-card);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-neumorphic);
             padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(99, 102, 241, 0.2);
         }
 
         .skill-category h3 {
@@ -420,18 +551,37 @@
         }
 
         .skill-tag {
-            background: var(--bg-primary);
+            background: var(--gradient-card);
             padding: 0.5rem 1rem;
             border-radius: 25px;
-            box-shadow: var(--shadow-neumorphic);
+            box-shadow: var(--shadow-soft);
             font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-tag:hover::before {
+            left: 100%;
         }
 
         .skill-tag:hover {
             box-shadow: var(--shadow-inset);
-            transform: scale(0.98);
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         /* Projects Section */
@@ -442,16 +592,37 @@
         }
 
         .project-card {
-            background: var(--bg-secondary);
+            background: var(--gradient-card);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-neumorphic);
             overflow: hidden;
             transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 50px rgba(99, 102, 241, 0.15),
+                0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         .project-image {
@@ -474,9 +645,6 @@
         }
 
         .project-image.flutter::before { content: '\f3cd'; }
-        .project-image.game::before { content: '\f11b'; }
-        .project-image.ai::before { content: '\f544'; }
-        .project-image.voice::before { content: '\f130'; }
         .project-image.database::before { content: '\f1c0'; }
 
         .project-content {
@@ -552,57 +720,6 @@
             transform: translateY(-2px);
         }
 
-        /* Blog Section */
-        .blog {
-            background: var(--bg-secondary);
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            background: var(--bg-primary);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-neumorphic);
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .blog-card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-3px);
-        }
-
-        .blog-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .blog-excerpt {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .read-more {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
         /* Contact Section */
         .contact-content {
             display: grid;
@@ -624,15 +741,36 @@
             margin-bottom: 1.5rem;
             padding: 1.5rem;
             background: var(--bg-secondary);
-            border-radius: 15px;
-            box-shadow: var(--shadow-neumorphic);
+            border-radius: 20px;
             text-decoration: none;
             color: var(--text-primary);
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                inset 8px 8px 16px rgba(0, 0, 0, 0.1),
+                inset -8px -8px 16px rgba(255, 255, 255, 0.05),
+                0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            pointer-events: none;
         }
 
         .contact-item:hover {
-            box-shadow: var(--shadow-inset);
+            transform: translateY(-3px);
+            box-shadow: 
+                inset 6px 6px 12px rgba(0, 0, 0, 0.15),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.08),
+                0 8px 30px rgba(0, 0, 0, 0.15);
         }
 
         .contact-icon {
@@ -690,19 +828,44 @@
             height: 60px;
             background: var(--bg-primary);
             border-radius: 50%;
-            box-shadow: var(--shadow-neumorphic);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-primary);
             text-decoration: none;
             font-size: 1.5rem;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.05),
+                0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
         }
 
         .social-link:hover {
-            box-shadow: var(--shadow-inset);
-            transform: scale(0.95);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.08),
+                0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .cta-section {
@@ -763,8 +926,8 @@
         /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
         }
 
         .fade-in.visible {
@@ -772,29 +935,80 @@
             transform: translateY(0);
         }
 
+        /* Smooth hover animations */
+        .neu-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 24px rgba(209, 217, 230, 0.4), -12px -12px 24px rgba(255, 255, 255, 0.9);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .skill-tag:hover {
+            box-shadow: var(--shadow-inset);
+            transform: scale(1.02);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Gentle pulse animation for buttons */
+        .neu-button:hover {
+            box-shadow: var(--shadow-inset);
+            transform: scale(0.98);
+            transition: all 0.2s ease-out;
+        }
+
+        /* Soft glow animation for interactive elements */
+        @keyframes softGlow {
+            0%, 100% { 
+                box-shadow: var(--shadow-neumorphic);
+            }
+            50% { 
+                box-shadow: var(--shadow-neumorphic), 0 0 20px rgba(102, 126, 234, 0.2);
+            }
+        }
+
+        .contact-item:hover {
+            animation: softGlow 2s ease-in-out;
+        }
+
+        /* Reduced motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            .floating {
+                animation: none;
+            }
+            
+            .profile-avatar::before {
+                animation: none;
+                opacity: 0.5;
+            }
+            
+            .fade-in {
+                transition: opacity 0.3s ease;
+                transform: none;
+            }
+            
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         .floating {
-            animation: float 6s ease-in-out infinite;
+            animation: gentleFloat 8s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Hosting info banner */
-        .hosting-info {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-        }
-
-        .hosting-info a {
-            color: white;
-            text-decoration: underline;
+        @keyframes gentleFloat {
+            0%, 100% { 
+                transform: translateY(0px);
+            }
+            50% { 
+                transform: translateY(-10px);
+            }
         }
     </style>
 </head>
@@ -809,7 +1023,6 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <buttonbutton class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark theme">
@@ -838,11 +1051,11 @@
                         </a>
                     </div>
                 </div>
-                <div class="hero-image">
+                            <img src="profile-PIC.jpg" alt="Akhtiar Burghri Profile Photo" id="profileImage" class="profile-img-hidden" onload="this.classList.remove('profile-img-hidden'); this.nextElementSibling.style.display='none';">
                     <div class="profile-card floating">
                         <div class="profile-avatar">
                             <!-- Replace 'your-photo.jpg' with your actual photo filename -->
-                            <img src="images/profile-PIC.jpg" alt="Akhtiar Ali Profile Photo" id="profileImage" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                            <img src="profile-PIC.jpg" alt="Akhtiar Burghri Profile Photo" id="profileImage" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
                             <i class="fas fa-user-graduate" id="fallbackIcon"></i>
                         </div>
                         <h3>CS Student & Developer</h3>
@@ -868,9 +1081,9 @@
                 <div class="about-text">
                     <p>I'm a dedicated Computer Science student at SZABIST University, currently in my third year with two years of solid academic foundation behind me. My journey in programming began with curiosity and has evolved into a passionate pursuit of creating meaningful digital experiences.</p>
                     
-                    <p>I specialize in <strong>Flutter development</strong> for cross-platform mobile applications, and I'm deeply passionate about <strong>game development</strong> using engines like Flame and Godot. My technical expertise spans multiple programming languages including Dart, C++, Python, and JavaScript, with a particular love for neumorphic UI design that creates intuitive and beautiful user experiences.</p>
+                    <p>I specialize in <strong>Flutter development</strong> for cross-platform mobile applications, with hands-on experience building real-world apps like teacher management systems and e-commerce platforms. My technical expertise spans multiple programming languages including Dart, C++, Python, and JavaScript, with a particular love for neumorphic UI design that creates intuitive and beautiful user experiences.</p>
 
-                    <p>Beyond mobile apps, I'm fascinated by <strong>AI and automation</strong>. I work with cutting-edge tools like n8n for workflow automation, integrate speech recognition technologies, and leverage cloud platforms like Firebase and Supabase to build scalable applications. My goal is to bridge the gap between complex technology and user-friendly interfaces.</p>
+                    <p>I have strong experience in <strong>backend development</strong> and cloud integration, working with platforms like Firebase and Supabase to build scalable applications. I'm also passionate about learning <strong>game development</strong> using engines like Flame and Godot, and exploring automation tools. My goal is to bridge the gap between complex technology and user-friendly interfaces.</p>
 
                     <ul class="goals-list">
                         <li>
@@ -893,7 +1106,7 @@
                 </div>
                 <div class="achievements">
                     <div class="achievement-item">
-                        <div class="achievement-number">10+</div>
+                        <div class="achievement-number">6+</div>
                         <div>Projects Completed</div>
                     </div>
                     <div class="achievement-item">
@@ -1030,81 +1243,25 @@
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-image game"></div>
+                    <div class="project-image flutter"></div>
                     <div class="project-content">
-                        <h3 class="project-title">Metal Slug 2D Game</h3>
+                        <h3 class="project-title">Period Tracking App</h3>
                         <p class="project-description">
-                            A thrilling 2D side-scrolling shooter game built with Flame engine, featuring classic Metal Slug-style gameplay with modern touches. Includes multiple levels, enemy AI, power-ups, and smooth animations.
+                            A comprehensive Flutter application designed for women's health tracking, featuring period cycle monitoring, symptom logging, mood tracking, and fertility prediction. Built with privacy-first design and intuitive user interface for daily health management.
                         </p>
                         <div class="project-learning">
-                            <strong>What I learned:</strong> Game physics implementation, sprite animation systems, collision detection algorithms, game state management, and optimizing performance for mobile devices.
+                            <strong>What I learned:</strong> Implementing sensitive data handling, creating calendar-based UI components, working with date calculations and predictions, local data storage for privacy, and designing inclusive health-focused user experiences.
                         </div>
                         <div class="project-tech">
-                            <span class="tech-tag">Flame Engine</span>
                             <span class="tech-tag">Flutter</span>
                             <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">Game Physics</span>
-                            <span class="tech-tag">Animation</span>
+                            <span class="tech-tag">Local Storage</span>
+                            <span class="tech-tag">Calendar UI</span>
+                            <span class="tech-tag">Health Data</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link primary">
-                                <i class="fas fa-gamepad"></i> Play Game
-                            </a>
-                            <a href="#" class="project-link secondary">
-                                <i class="fab fa-github"></i> Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image ai"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">AI Job Application Automation</h3>
-                        <p class="project-description">
-                            An intelligent automation system using n8n and Phantombuster to streamline job applications. Features CV parsing, job matching algorithms, and automated application submission with personalized cover letters.
-                        </p>
-                        <div class="project-learning">
-                            <strong>What I learned:</strong> Workflow automation design, API integrations, web scraping techniques, natural language processing for CV analysis, and building scalable automation pipelines.
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">n8n</span>
-                            <span class="tech-tag">Phantombuster</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Web Scraping</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link primary">
-                                <i class="fas fa-robot"></i> View Demo
-                            </a>
-                            <a href="#" class="project-link secondary">
-                                <i class="fab fa-github"></i> Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image voice"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Voice-Controlled Flutter App</h3>
-                        <p class="project-description">
-                            An innovative mobile application that responds to voice commands, featuring speech-to-text conversion, natural language processing, and voice-controlled navigation. Perfect for accessibility and hands-free operation.
-                        </p>
-                        <div class="project-learning">
-                            <strong>What I learned:</strong> Speech recognition implementation, voice command processing, real-time audio handling, accessibility design principles, and integrating ML models for voice analysis.
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Speech Recognition</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Audio Processing</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link primary">
-                                <i class="fas fa-microphone"></i> Try Voice Demo
+                                <i class="fas fa-heart"></i> View App
                             </a>
                             <a href="#" class="project-link secondary">
                                 <i class="fab fa-github"></i> Source Code
@@ -1172,50 +1329,6 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="section-header">
-                <h2>Dev Blog & Insights</h2>
-                <p>Sharing my learning journey and technical discoveries</p>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card fade-in">
-                    <div class="blog-date">Coming Soon - January 2025</div>
-                    <h3 class="blog-title">Building Scalable Flutter Apps: My Journey with State Management</h3>
-                    <p class="blog-excerpt">
-                        Exploring the evolution from setState to Provider, Bloc, and Riverpod. A deep dive into choosing the right state management solution for different app complexities and team sizes.
-                    </p>
-                    <a href="#" class="read-more">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-
-                <article class="blog-card fade-in">
-                    <div class="blog-date">Coming Soon - February 2025</div>
-                    <h3 class="blog-title">Game Development with Flame: From Concept to Play Store</h3>
-                    <p class="blog-excerpt">
-                        A complete guide to building 2D games with Flutter's Flame engine. Covering game loops, sprite animations, collision detection, and publishing your game to app stores.
-                    </p>
-                    <a href="#" class="read-more">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-
-                <article class="blog-card fade-in">
-                    <div class="blog-date">Coming Soon - March 2025</div>
-                    <h3 class="blog-title">Automating the Boring Stuff: n8n Workflows for Developers</h3>
-                    <p class="blog-excerpt">
-                        How I automated my job application process and daily development tasks using n8n. Practical examples of workflow automation that every developer should know.
-                    </p>
-                    <a href="#" class="read-more">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -1227,27 +1340,27 @@
             <!-- Call to Action -->
             <div class="cta-section">
                 <h3>Ready to Build Something Amazing Together?</h3>
-                <p>I'm actively seeking internship opportunities, freelance projects, and exciting collaborations. Whether you need a Flutter developer, game development enthusiast, or someone passionate about AI automation, let's create something innovative!</p>
-                <a href="mailto:akhtiar.ali.dev@gmail.com" class="neu-button" style="background: white; color: var(--primary-color);">
+                <p>I'm actively seeking internship opportunities, freelance projects, and exciting collaborations. Whether you need a Flutter developer, health app specialist, or someone passionate about creating meaningful digital solutions, let's create something innovative!</p>
+                <button class="neu-button email-btn" onclick="handleCollaborate()">
                     <i class="fas fa-handshake"></i>
                     Let's Collaborate
-                </a>
+                </button>
             </div>
 
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Get In Touch</h3>
-                    <a href="mailto:akhtiar.ali.dev@gmail.com" class="contact-item">
+                    <a href="mailto:akhtiarali11j@gmail.com" class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>akhtiar.ali.dev@gmail.com</p>
+                            <p>akhtiarali11j@gmail.com</p>
                         </div>
                     </a>
 
-                    <a href="https://linkedin.com/in/akhtiar-ali" class="contact-item">
+                    <a href="https://www.linkedin.com/in/akhtiar-ali-038a12316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="contact-item">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin"></i>
                         </div>
@@ -1257,7 +1370,7 @@
                         </div>
                     </a>
 
-                    <a href="https://github.com/akhtiar-ali" class="contact-item">
+                    <a href="https://github.com/Akhtiar11" class="contact-item">
                         <div class="contact-icon">
                             <i class="fab fa-github"></i>
                         </div>
@@ -1279,23 +1392,11 @@
                 </div>
 
                 <div class="download-section">
-                    <a href="my_resume.pdf" class="download-resume" onclick="downloadResume()">
+                    <a href="#" class="download-resume" onclick="downloadResume()">
                         <i class="fas fa-download"></i>
                         <h4>Download Resume</h4>
                         <p>Get my complete CV with detailed project information</p>
                     </a>
-
-                    <div class="hosting-info">
-                        <h4>🚀 Host Your Portfolio for FREE!</h4>
-                        <p>
-                            <strong>Recommended platforms:</strong><br>
-                            <aa href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> • 
-                            <a href="https://netlify.com/" target="_blank" rel="noopener">Netlify</a> • 
-                            <a href="https://vercel.com/" target="_blank" rel="noopener">Vercel</a> • 
-                            <a href="https://firebase.google.com/docs/hosting" target="_blank" rel="noopener">Firebase Hosting</a>
-                        </p>
-                        <small>Simply upload your HTML file and get a professional URL instantly!</small>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1305,20 +1406,20 @@
     <footer class="footer">
         <div class="container">
             <div class="social-links">
-                <a href="https://github.com/akhtiar-ali" class="social-link">
+                <a href="https://github.com/Akhtiar11" class="social-link" title="GitHub Profile">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/akhtiar-ali" class="social-link">
+                <a href="https://www.linkedin.com/in/akhtiar-ali-038a12316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" title="LinkedIn Profile">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="mailto:akhtiar.ali.dev@gmail.com" class="social-link">
+                <a href="mailto:akhtiarali11j@gmail.com" class="social-link" title="Send Email">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://twitter.com/akhtiar_ali_dev" class="social-link">
+                <a href="https://twitter.com/akhtiar_ali_dev" class="social-link" title="Twitter Profile">
                     <i class="fab fa-twitter"></i>
                 </a>
             </div>
-            <p>&copy; 2025 Akhtiar Ali. Built with passion for innovation and clean code. Available for exciting opportunities!</p>
+            <p>&copy; 2025 Akhtiar Burghri. Built with passion for innovation and clean code. Available for exciting opportunities!</p>
         </div>
     </footer>
 
@@ -1346,7 +1447,7 @@
             document.querySelector('.theme-toggle i').className = 'fas fa-sun';
         }
 
-        // Typewriter Effect
+        // Typewriter Effect - smoother and more eye-friendly
         const roles = ['Flutter Developer', 'Game Developer', 'AI Enthusiast', 'Automation Expert', 'Problem Solver'];
         let roleIndex = 0;
         let charIndex = 0;
@@ -1363,6 +1464,8 @@
                 if (charIndex === 0) {
                     isDeleting = false;
                     roleIndex = (roleIndex + 1) % roles.length;
+                    setTimeout(typeWriter, 500); // Pause before starting new word
+                    return;
                 }
             } else {
                 typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
@@ -1371,11 +1474,13 @@
                 if (charIndex === currentRole.length) {
                     setTimeout(() => {
                         isDeleting = true;
-                    }, 2000);
+                        typeWriter();
+                    }, 3000); // Longer pause when word is complete
+                    return;
                 }
             }
             
-            const typingSpeed = isDeleting ? 50 : 100;
+            const typingSpeed = isDeleting ? 80 : 120; // Slower, more readable speed
             setTimeout(typeWriter, typingSpeed);
         }
 
@@ -1396,16 +1501,19 @@
             });
         });
 
-        // Intersection Observer for animations
+        // Intersection Observer for gentle animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    // Stagger animations for a more natural feel
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
                 }
             });
         }, observerOptions);
@@ -1419,6 +1527,84 @@
         function downloadResume() {
             // In a real implementation, this would download an actual PDF
             alert('Resume download feature - In a real implementation, this would download your PDF resume!');
+        }
+
+        // Enhanced Collaborate Function
+        function handleCollaborate() {
+            const options = [
+                "📧 Send me an email directly",
+                "💼 Connect on LinkedIn", 
+                "📱 Copy my email address",
+                "❌ Cancel"
+            ];
+            
+            const choice = prompt(
+                "How would you like to get in touch for collaboration?\n\n" +
+                "1. " + options[0] + "\n" +
+                "2. " + options[1] + "\n" + 
+                "3. " + options[2] + "\n" +
+                "4. " + options[3] + "\n\n" +
+                "Please enter 1, 2, 3, or 4:"
+            );
+            
+            switch(choice) {
+                case '1':
+                    // Open email with pre-filled subject and body
+                    const emailSubject = encodeURIComponent("Collaboration Opportunity - Let's Work Together!");
+                    const emailBody = encodeURIComponent(
+                        "Hi Akhtiar,\n\n" +
+                        "I'm interested in collaborating with you on a project. I visited your portfolio and would love to discuss:\n\n" +
+                        "• Project details: [Please describe your project]\n" +
+                        "• Timeline: [When do you need this completed?]\n" +
+                        "• Budget/Compensation: [If applicable]\n" +
+                        "• Technology requirements: [Any specific tech stack?]\n\n" +
+                        "Looking forward to hearing from you!\n\n" +
+                        "Best regards,\n" +
+                        "[Your name]"
+                    );
+                    window.open(`mailto:akhtiarali11j@gmail.com?subject=${emailSubject}&body=${emailBody}`);
+                    break;
+                    
+                case '2':
+                    // Open LinkedIn profile
+                    const confirmation = confirm(
+                        "This will open my LinkedIn profile where you can send me a professional message.\n\n" +
+                        "OK = Open in new tab\nCancel = Open in same page"
+                    );
+                    const linkedinUrl = "https://www.linkedin.com/in/akhtiar-ali-038a12316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app";
+                    
+                    if (confirmation) {
+                        window.open(linkedinUrl, '_blank', 'noopener,noreferrer');
+                    } else {
+                        window.location.href = linkedinUrl;
+                    }
+                    break;
+                    
+                case '3':
+                    // Copy email to clipboard
+                    const email = "akhtiarali11j@gmail.com";
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(email).then(() => {
+                            alert(`✅ Email copied to clipboard!\n\n${email}\n\nYou can now paste it in your email client.`);
+                        }).catch(() => {
+                            // Fallback for older browsers
+                            prompt("Copy this email address:", email);
+                        });
+                    } else {
+                        // Fallback for older browsers
+                        prompt("Copy this email address:", email);
+                    }
+                    break;
+                    
+                case '4':
+                case null:
+                    // User cancelled
+                    break;
+                    
+                default:
+                    alert("Please enter 1, 2, 3, or 4 to choose your preferred contact method.");
+                    handleCollaborate(); // Ask again
+            }
         }
 
         // Navbar background on scroll
@@ -1439,60 +1625,98 @@
         document.querySelectorAll('.neu-card, .neu-button').forEach(element => {
             element.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-2px)';
+                this.style.transition = 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
             
             element.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
+                this.style.transition = 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
         });
 
         // Contact item click effects
         document.querySelectorAll('.contact-item').forEach(item => {
             item.addEventListener('click', function(e) {
-                // Add a subtle pulse effect
-                this.style.transform = 'scale(0.98)';
+                // Add a gentle pulse effect
+                this.style.transform = 'scale(0.99)';
+                this.style.transition = 'all 0.2s ease-out';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 150);
             });
         });
 
-        // Project card hover effects
+        // Project card hover effects with smoother transitions
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 const image = this.querySelector('.project-image');
-                image.style.transform = 'scale(1.05)';
+                image.style.transform = 'scale(1.03)';
+                image.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
             
             card.addEventListener('mouseleave', function() {
                 const image = this.querySelector('.project-image');
                 image.style.transform = 'scale(1)';
+                image.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
         });
 
-        // Skill tag animations
+        // Skill tag animations with gentle transitions
         document.querySelectorAll('.skill-tag').forEach(tag => {
             tag.addEventListener('mouseenter', function() {
                 this.style.background = 'var(--gradient-primary)';
                 this.style.color = 'white';
+                this.style.transition = 'all 0.3s ease-out';
             });
             
             tag.addEventListener('mouseleave', function() {
                 this.style.background = 'var(--bg-primary)';
                 this.style.color = 'var(--text-primary)';
+                this.style.transition = 'all 0.3s ease-out';
             });
         });
 
-        // Add loading states for external links
+        // Add gentle loading states for external links
         document.querySelectorAll('a[href^="http"], a[href^="mailto:"]').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function(e) {
+                // Skip confirmation for email links
+                if (this.href.startsWith('mailto:')) {
+                    const icon = this.querySelector('i');
+                    if (icon && !icon.classList.contains('fa-spinner')) {
+                        const originalClass = icon.className;
+                        icon.style.transition = 'all 0.3s ease';
+                        icon.className = 'fas fa-spinner fa-pulse';
+                        setTimeout(() => {
+                            icon.className = originalClass;
+                        }, 1500);
+                    }
+                    return;
+                }
+
+                // Prevent default behavior for external links
+                e.preventDefault();
+                
+                // Show confirmation dialog for external links
+                const linkText = this.title || this.textContent.trim() || 'this link';
+                const confirmation = confirm(`How would you like to open ${linkText}?\n\nOK = Open in new tab\nCancel = Open in same page`);
+                
+                if (confirmation) {
+                    // Open in new tab
+                    window.open(this.href, '_blank', 'noopener,noreferrer');
+                } else {
+                    // Open in same page
+                    window.location.href = this.href;
+                }
+
+                // Add loading animation
                 const icon = this.querySelector('i');
-                if (icon) {
+                if (icon && !icon.classList.contains('fa-spinner')) {
                     const originalClass = icon.className;
-                    icon.className = 'fas fa-spinner fa-spin';
+                    icon.style.transition = 'all 0.3s ease';
+                    icon.className = 'fas fa-spinner fa-pulse';
                     setTimeout(() => {
                         icon.className = originalClass;
-                    }, 1000);
+                    }, 1500);
                 }
             });
         });
