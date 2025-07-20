@@ -155,11 +155,6 @@
             border-color: rgba(99, 102, 241, 0.3);
         }
 
-        .neu-button.email-btn {
-            background: white !important;
-            color: var(--primary-color) !important;
-        }
-
         .neu-button.primary {
             background: var(--gradient-primary);
             color: white;
@@ -185,11 +180,20 @@
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar:hover {
+            background: rgba(240, 244, 248, 0.97);
         }
 
         [data-theme="dark"] .navbar {
             background: rgba(26, 32, 44, 0.95);
+        }
+
+        [data-theme="dark"] .navbar:hover {
+            background: rgba(26, 32, 44, 0.97);
         }
 
         .nav-container {
@@ -205,6 +209,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
         }
 
         .nav-links {
@@ -218,13 +229,16 @@
             color: var(--text-primary);
             font-weight: 500;
             padding: 0.5rem 1rem;
-            border-radius: 10px;
-            transition: var(--transition);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             background: var(--bg-secondary);
-            box-shadow: var(--shadow-inset);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+            color: var(--primary-color);
         }
 
         .theme-toggle {
@@ -238,11 +252,13 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .theme-toggle:hover {
-            box-shadow: var(--shadow-inset);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            color: var(--primary-color);
         }
 
         /* Hero Section */
@@ -729,9 +745,6 @@
 
         /* Contact Section */
         .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -739,6 +752,11 @@
         .contact-info h3 {
             font-size: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        .contact-info.centered {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .contact-item {
@@ -792,30 +810,6 @@
             font-size: 1.5rem;
             box-shadow: var(--shadow-neumorphic);
         }
-
-        .download-resume {
-            background: var(--gradient-accent);
-            color: white;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-neumorphic);
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .download-resume:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .download-resume i {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
         /* Footer */
         .footer {
             background: var(--bg-secondary);
@@ -873,27 +867,6 @@
                 inset 4px 4px 8px rgba(0, 0, 0, 0.15),
                 inset -4px -4px 8px rgba(255, 255, 255, 0.08),
                 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-section {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 4rem 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-neumorphic);
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .cta-section h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
         }
 
         /* Responsive Design */
@@ -1343,19 +1316,9 @@
                 <h2>Let's Connect</h2>
                 <p>Ready to collaborate on exciting projects or discuss opportunities</p>
             </div>
-            
-            <!-- Call to Action -->
-            <div class="cta-section">
-                <h3>Ready to Build Something Amazing Together?</h3>
-                <p>I'm actively seeking internship opportunities, freelance projects, and exciting collaborations. Whether you need a Flutter developer, health app specialist, or someone passionate about creating meaningful digital solutions, let's create something innovative!</p>
-                <button class="neu-button email-btn" onclick="handleCollaborate()">
-                    <i class="fas fa-handshake"></i>
-                    Let's Collaborate
-                </button>
-            </div>
 
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-info centered">
                     <h3>Get In Touch</h3>
                     <a href="mailto:akhtiarali11j@gmail.com" class="contact-item">
                         <div class="contact-icon">
@@ -1396,14 +1359,6 @@
                             <p>Karachi, Pakistan</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="download-section">
-                    <a href="my_resume.pdf" class="download-resume" onclick="downloadResume()">
-                        <i class="fas fa-download"></i>
-                        <h4>Download Resume</h4>
-                        <p>Get my complete CV with detailed project information</p>
-                    </a>
                 </div>
             </div>
         </div>
@@ -1529,90 +1484,6 @@
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
-
-        // Download Resume Function
-        function downloadResume() {
-            // In a real implementation, this would download an actual PDF
-            alert('Resume download feature - In a real implementation, this would download your PDF resume!');
-        }
-
-        // Enhanced Collaborate Function
-        function handleCollaborate() {
-            const options = [
-                "📧 Send me an email directly",
-                "💼 Connect on LinkedIn", 
-                "📱 Copy my email address",
-                "❌ Cancel"
-            ];
-            
-            const choice = prompt(
-                "How would you like to get in touch for collaboration?\n\n" +
-                "1. " + options[0] + "\n" +
-                "2. " + options[1] + "\n" + 
-                "3. " + options[2] + "\n" +
-                "4. " + options[3] + "\n\n" +
-                "Please enter 1, 2, 3, or 4:"
-            );
-            
-            switch(choice) {
-                case '1':
-                    // Open email with pre-filled subject and body
-                    const emailSubject = encodeURIComponent("Collaboration Opportunity - Let's Work Together!");
-                    const emailBody = encodeURIComponent(
-                        "Hi Akhtiar,\n\n" +
-                        "I'm interested in collaborating with you on a project. I visited your portfolio and would love to discuss:\n\n" +
-                        "• Project details: [Please describe your project]\n" +
-                        "• Timeline: [When do you need this completed?]\n" +
-                        "• Budget/Compensation: [If applicable]\n" +
-                        "• Technology requirements: [Any specific tech stack?]\n\n" +
-                        "Looking forward to hearing from you!\n\n" +
-                        "Best regards,\n" +
-                        "[Your name]"
-                    );
-                    window.open(`mailto:akhtiarali11j@gmail.com?subject=${emailSubject}&body=${emailBody}`);
-                    break;
-                    
-                case '2':
-                    // Open LinkedIn profile
-                    const confirmation = confirm(
-                        "This will open my LinkedIn profile where you can send me a professional message.\n\n" +
-                        "OK = Open in new tab\nCancel = Open in same page"
-                    );
-                    const linkedinUrl = "https://www.linkedin.com/in/akhtiar-ali-038a12316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app";
-                    
-                    if (confirmation) {
-                        window.open(linkedinUrl, '_blank', 'noopener,noreferrer');
-                    } else {
-                        window.location.href = linkedinUrl;
-                    }
-                    break;
-                    
-                case '3':
-                    // Copy email to clipboard
-                    const email = "akhtiarali11j@gmail.com";
-                    if (navigator.clipboard) {
-                        navigator.clipboard.writeText(email).then(() => {
-                            alert(`✅ Email copied to clipboard!\n\n${email}\n\nYou can now paste it in your email client.`);
-                        }).catch(() => {
-                            // Fallback for older browsers
-                            prompt("Copy this email address:", email);
-                        });
-                    } else {
-                        // Fallback for older browsers
-                        prompt("Copy this email address:", email);
-                    }
-                    break;
-                    
-                case '4':
-                case null:
-                    // User cancelled
-                    break;
-                    
-                default:
-                    alert("Please enter 1, 2, 3, or 4 to choose your preferred contact method.");
-                    handleCollaborate(); // Ask again
-            }
-        }
 
         // Navbar background on scroll
         window.addEventListener('scroll', () => {
