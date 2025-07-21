@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akhtiar Burghri - Computer Science Student & Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -820,7 +828,7 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
@@ -835,7 +843,7 @@
             color: var(--text-primary);
             text-decoration: none;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 
                 inset 6px 6px 12px rgba(0, 0, 0, 0.1),
@@ -854,19 +862,49 @@
             bottom: 0;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
+            transform: scale(0);
+            border-radius: 50%;
         }
 
         .social-link:hover::before {
             opacity: 1;
+            transform: scale(1);
         }
 
         .social-link:hover {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-5px) scale(1.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* GitHub specific hover effect */
+        .social-link.github:hover {
+            background: linear-gradient(135deg, #333, #24292e);
+            color: white;
             box-shadow: 
-                inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-                inset -4px -4px 8px rgba(255, 255, 255, 0.08),
-                0 8px 25px rgba(0, 0, 0, 0.2);
+                0 12px 30px rgba(51, 51, 51, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            animation: none;
+        }
+
+        /* LinkedIn specific hover effect */
+        .social-link.linkedin:hover {
+            background: linear-gradient(135deg, #0077b5, #005885);
+            color: white;
+            box-shadow: 
+                0 12px 30px rgba(0, 119, 181, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            animation: none;
+        }
+
+        /* Email specific hover effect */
+        .social-link.email:hover {
+            background: linear-gradient(135deg, #ea4335, #c5221f);
+            color: white;
+            box-shadow: 
+                0 12px 30px rgba(234, 67, 53, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            animation: none;
         }
 
         /* Responsive Design */
@@ -1368,17 +1406,14 @@
     <footer class="footer">
         <div class="container">
             <div class="social-links">
-                <a href="https://github.com/Akhtiar11" class="social-link" title="GitHub Profile">
+                <a href="https://github.com/Akhtiar11" class="social-link github" title="GitHub Profile">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/akhtiar-ali-038a12316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" title="LinkedIn Profile">
+                <a href="https://www.linkedin.com/in/akhtiar-ali-038a12316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link linkedin" title="LinkedIn Profile">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="mailto:akhtiarali11j@gmail.com" class="social-link" title="Send Email">
+                <a href="mailto:akhtiarali11j@gmail.com" class="social-link email" title="Send Email">
                     <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://twitter.com/akhtiar_ali_dev" class="social-link" title="Twitter Profile">
-                    <i class="fab fa-twitter"></i>
                 </a>
             </div>
             <p>&copy; 2025 Akhtiar Burghri. Built with passion for innovation and clean code. Available for exciting opportunities!</p>
